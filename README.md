@@ -1,1 +1,1 @@
-# SportsDigest-GPTProto
+# SportsDigest-GPT POC
