@@ -43,7 +43,7 @@ def save_boxscore_tables(game_id):
     tables = soup.find_all('table')
 
     with open(test_file_name, 'w') as f:
-        f.write('Test box score output\n\n')
+        f.write('Braves vs Red Sox Box Score\n\n')
 
     for i, table in enumerate(tables):
         if i == 0:
