@@ -5,4 +5,5 @@ SportDigest-GPT is a project leverages the GPT-3.5 model to generate summaries o
 ## Overview
 This prototype has relatively basic functionality. It is made up of 3 different components:
 
-1. The first component is a web scraper that calls the [ESPN Hidden API](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b). The scraper pulls all of the game ids for today's games and uses those game ids to retrieve the box score page on ESPN.com. The relevant box score tables are then scraped and outputted to a text file for later processing.
+1. The first component is a web scraper that calls the [ESPN Hidden API](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b). The scraper pulls all of the game ids for today's games and uses those game ids to retrieve the box score page on ESPN.com. The relevant box score tables are then scraped and outputted to a text file in the "boxscores" directory. The scraper only retrieves the box score for games that have been completed.
+2. The second component reads the box score tables into a string and sends it, along with a prompt asking for a summary of the game, to the GPT-3.5 model. The model returns a game summary which is then saved into a separate text file in the "summaries" directory.
