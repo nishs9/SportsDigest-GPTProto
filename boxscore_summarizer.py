@@ -5,7 +5,6 @@ def generate_all_summaries():
   # iterate through boxscores and return file name
   for file in os.listdir('boxscores'):
     if file.endswith('.txt'):
-      print(file)
       generate_single_summary(file)
 
 def generate_single_summary(file):
@@ -33,6 +32,7 @@ def generate_single_summary(file):
   summary = response.choices[0].message['content']
   summary_file_name = f'summaries/{game_id}-{away_team}-{home_team}-summary.txt'
   with open(summary_file_name, 'w') as f:
+    f.write(f'{away_team} vs {home_team} Summary\n\n')
     f.write(summary)
 
 if __name__ == '__main__':
