@@ -2,26 +2,34 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-url = 'https://www.espn.com/mlb/boxscore/_/gameId/401471565'
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'html.parser')
+test_file_name = 'table.txt'
+test_url = 'https://www.espn.com/mlb/boxscore/_/gameId/401471565'
 
-tables = soup.find_all('table')
+def save_boxscore_tables(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-for i, table in enumerate(tables):
-    if i == 10:
-        break
+    tables = soup.find_all('table')
 
-    columns = [th.text for th in table.find('tr').find_all('th')]
+    for i, table in enumerate(tables):
+        if i == 0:
+            continue
+        elif i == 10:
+            break
 
-    data_rows = table.find_all('tr')[1:]
-    data = [[td.text for td in row.find_all('td')] for row in data_rows]
+        columns = [th.text for th in table.find('tr').find_all('th')]
 
-    df = pd.DataFrame(data, columns=columns)
-    print(df)
-    print()
+        data_rows = table.find_all('tr')[1:]
+        data = [[td.text for td in row.find_all('td')] for row in data_rows]
 
-    # write the df to a single text file as previous iterations and do not overwrite
-    with open(f'table_{i}.txt', 'a') as f:
-        f.write(df.to_string())
-        f.write('\n\n')
+        df = pd.DataFrame(data, columns=columns)
+        print(df)
+        print()
+
+        # write the df to a single text file as previous iterations and do not overwrite
+        with open(test_file_name, 'a') as f:
+            f.write(df.to_string())
+            f.write('\n\n')
+
+if __name__ == "__main__":
+    save_boxscore_tables(test_url)
