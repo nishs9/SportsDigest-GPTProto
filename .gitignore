@@ -1,6 +1,9 @@
 # Generated files
 *.txt
 
+# Test files I don't want on the gh repo
+test.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
