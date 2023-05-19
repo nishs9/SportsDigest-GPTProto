@@ -2,26 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-test_file_name = 'table.txt'
-test_boxscore_url = 'https://www.espn.com/mlb/boxscore/_/gameId/401471565'
-
-def generate_team_mapping_csv():
-    teams_url = "http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams"
-
-    with open('team_mapping.csv', 'w') as csv:
-        csv.write('Display Name,Abbreviation\n')
-    
-    response = requests.get(teams_url)
-    data = response.json()
-
-    for team in data['sports'][0]['leagues'][0]['teams']:
-        # write displayName and abbreviation to csv
-        displayName = team['team']['displayName']
-        abbreviation = team['team']['abbreviation']
-        
-        with open('team_mapping.csv', 'a') as csv:
-            csv.write(displayName + ',' + abbreviation + '\n')
-
 # Retrieves the ESPN game id of all finished MLB games of the current day
 def get_completed_games():
     scoreboard_url = "http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
