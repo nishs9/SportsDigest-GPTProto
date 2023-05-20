@@ -1,5 +1,6 @@
 import smtplib
 import os
+import secret_keys
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -12,7 +13,6 @@ def generate_combined_summaries():
                 combined_summaries += f.read()
                 combined_summaries += "\n\n"
 
-    print(combined_summaries)
     return combined_summaries
 
 def send_summary_email(email_contents):
@@ -20,9 +20,9 @@ def send_summary_email(email_contents):
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     username = 'SportsDigestGPT@gmail.com'
-    password = os.getenv("SDGPT_APP_PW")
+    password = secret_keys.from_email_password
     from_addr = 'SportsDigestGPT@gmail.com'
-    to_addrs = ['snishk@gmail.com']
+    to_addrs = [secret_keys.to_email]
 
     # Setup message
     msg = MIMEMultipart()

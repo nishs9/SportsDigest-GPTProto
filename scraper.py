@@ -20,7 +20,6 @@ def get_completed_games():
             away_teams.append(event['competitions'][0]['competitors'][1]['team']['displayName'])
 
     if len(game_ids) == 0:
-        print('No games have finished today.')
         return game_ids
     
     return (game_ids, home_teams, away_teams)

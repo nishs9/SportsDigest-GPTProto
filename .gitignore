@@ -1,6 +1,9 @@
 # Generated files
 *.txt
 
+# API/Passwords File
+secret_keys.py
+
 # Test files I don't want on the gh repo
 test.py
 
