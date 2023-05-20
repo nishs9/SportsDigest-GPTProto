@@ -24,6 +24,7 @@ def get_completed_games():
     
     return (game_ids, home_teams, away_teams)
 
+# Saves the boxscore tables of a given game to a text file
 def save_boxscore_tables(game_id, home_team, away_team):
     url = f'https://www.espn.com/mlb/boxscore/_/gameId/{game_id}'
     response = requests.get(url)
@@ -48,7 +49,6 @@ def save_boxscore_tables(game_id, home_team, away_team):
 
         df = pd.DataFrame(data, columns=columns)
 
-        # write the df to a single text file as previous iterations and do not overwrite
         with open(file_name, 'a') as f:
             f.write(df.to_string())
             f.write('\n\n')

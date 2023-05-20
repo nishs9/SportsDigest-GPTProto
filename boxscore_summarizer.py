@@ -2,14 +2,14 @@ import os
 import openai
 import secret_keys
 
+# Generate summaries for all boxscores
 def generate_all_summaries():
-  # iterate through boxscores and return file name
   for file in os.listdir('boxscores'):
     if file.endswith('.txt'):
       generate_single_summary(file)
 
+# Helper method to generate individual game summaries
 def generate_single_summary(file):
-  # read text from table.txt
   data = ""
   with open(f'boxscores/{file}', 'r') as file:
       data = file.read()
@@ -17,6 +17,8 @@ def generate_single_summary(file):
   game_id = file.name.split('-')[0].split('/')[1]
   away_team = file.name.split('-')[2]
   home_team = file.name.split('-')[1]
+
+  print(f"Generating summary for {away_team} vs {home_team}...")
 
   prompt = f"Give me a brief summary of a game between the {away_team} and {home_team} from the following box score. Avoid being overly verbose. Just provide a basic summary of the game, and some standout performers:\n\n"
 

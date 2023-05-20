@@ -4,8 +4,8 @@ import secret_keys
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+# Generate combined summary for the email
 def generate_combined_summaries():
-    # iterate through files in sumaries directory and combine them into one string and return it
     combined_summaries = ""
     for file in os.listdir('summaries'):
         if file.endswith('.txt'):
@@ -15,6 +15,7 @@ def generate_combined_summaries():
 
     return combined_summaries
 
+# Send summary email
 def send_summary_email(email_contents):
     # Email configuration details
     smtp_server = 'smtp.gmail.com'
