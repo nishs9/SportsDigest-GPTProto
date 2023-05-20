@@ -20,7 +20,7 @@ def send_summary_email(email_contents):
     # Email configuration details
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    username = 'SportsDigestGPT@gmail.com'
+    username = secret_keys.from_email
     password = secret_keys.from_email_password
     from_addr = 'SportsDigestGPT@gmail.com'
     to_addrs = [secret_keys.to_email]

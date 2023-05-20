@@ -1,5 +1,6 @@
 # Generated files
 *.txt
+!requirements.txt
 
 # API/Passwords File
 secret_keys.py

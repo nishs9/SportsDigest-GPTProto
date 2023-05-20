@@ -22,7 +22,7 @@ def generate_single_summary(file):
 
   prompt = f"Give me a brief summary of a game between the {away_team} and {home_team} from the following box score. Avoid being overly verbose. Just provide a basic summary of the game, and some standout performers:\n\n"
 
-  openai.api_key = secret_keys.api_key
+  openai.api_key = secret_keys.openai_api_key
 
   response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
