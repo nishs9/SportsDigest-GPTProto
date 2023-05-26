@@ -18,11 +18,11 @@ def generate_combined_summaries():
 # Send summary email
 def send_summary_email(email_contents):
     # Email configuration details
-    smtp_server = 'smtp.gmail.com'
+    smtp_server = "smtp.gmail.com"
     smtp_port = 587
     username = secret_keys.from_email
     password = secret_keys.from_email_password
-    from_addr = 'SportsDigestGPT@gmail.com'
+    from_addr = secret_keys.from_email
     to_addrs = [secret_keys.to_email]
 
     # Setup message
